@@ -7,3 +7,10 @@ Password will include:
     2 punctuation signs
 These characters will appear in a random order
 """
+
+characterTypes = {
+    "uppercaseLetter": [65, 90],
+    "lowercaseLetter": [97, 122],
+    "digit": [48, 57],
+    "punctuationSign": [[33, 47], [58, 64], [91, 96], [123, 126]]
+}
