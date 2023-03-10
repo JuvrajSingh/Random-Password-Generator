@@ -25,3 +25,19 @@ def generateCharacter(characterType):
     characterChoices = characterTypes[characterType]
     character = random.choice(characterChoices)
     return character
+
+def generatePassword():
+    """
+    Generates a random password
+    """
+    password = ""
+    password += generateCharacter("uppercaseLetter")
+    password += generateCharacter("uppercaseLetter")
+    password += generateCharacter("lowercaseLetter")
+    password += generateCharacter("lowercaseLetter")
+    password += generateCharacter("digit")
+    password += generateCharacter("digit")
+    password += generateCharacter("symbol")
+    password += generateCharacter("symbol")
+
+    return password
