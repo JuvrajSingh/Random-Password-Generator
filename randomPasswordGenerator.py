@@ -47,4 +47,11 @@ def generate_password():
     password += generate_character("symbol")
     password += generate_character("symbol")
 
-    return password
+    final_password = shuffle_characters(password)
+
+    return final_password
+
+
+if __name__ == "__main__":
+    password = generate_password()
+    print(password)
