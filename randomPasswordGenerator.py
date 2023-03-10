@@ -38,10 +38,10 @@ def generate_password():
     Generates a random password
     """
     password = ""
-    password += generate_character("uppercaseLetter")
-    password += generate_character("uppercaseLetter")
-    password += generate_character("lowercaseLetter")
-    password += generate_character("lowercaseLetter")
+    password += generate_character("uppercase_letter")
+    password += generate_character("uppercase_letter")
+    password += generate_character("lowercase_letter")
+    password += generate_character("lowercase_letter")
     password += generate_character("digit")
     password += generate_character("digit")
     password += generate_character("symbol")
