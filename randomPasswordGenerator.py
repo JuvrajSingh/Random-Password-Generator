@@ -11,33 +11,40 @@ Password will include:
 These characters will appear in a random order
 """
 
-characterTypes = {
-    "uppercaseLetter": string.ascii_uppercase,
-    "lowercaseLetter": string.ascii_lowercase,
+character_types = {
+    "uppercase_letter": string.ascii_uppercase,
+    "lowercase_letter": string.ascii_lowercase,
     "digit": string.digits,
     "symbol": string.punctuation
 }
 
-def generateCharacter(characterType):
+def generate_character(character_type):
     """
     Generates a random character given the type
     """
-    characterChoices = characterTypes[characterType]
-    character = random.choice(characterChoices)
+    character_choices = character_types[character_type]
+    character = random.choice(character_choices)
     return character
 
-def generatePassword():
+def shuffle_characters(characters):
+    """
+    Given a string, returns a string with all the characters shuffled
+    """
+    shuffled_characters = "".join(random.sample(characters, len(characters)))
+    return shuffled_characters
+
+def generate_password():
     """
     Generates a random password
     """
     password = ""
-    password += generateCharacter("uppercaseLetter")
-    password += generateCharacter("uppercaseLetter")
-    password += generateCharacter("lowercaseLetter")
-    password += generateCharacter("lowercaseLetter")
-    password += generateCharacter("digit")
-    password += generateCharacter("digit")
-    password += generateCharacter("symbol")
-    password += generateCharacter("symbol")
+    password += generate_character("uppercaseLetter")
+    password += generate_character("uppercaseLetter")
+    password += generate_character("lowercaseLetter")
+    password += generate_character("lowercaseLetter")
+    password += generate_character("digit")
+    password += generate_character("digit")
+    password += generate_character("symbol")
+    password += generate_character("symbol")
 
     return password
