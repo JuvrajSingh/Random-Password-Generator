@@ -50,8 +50,3 @@ def generate_password():
     final_password = shuffle_characters(password)
 
     return final_password
-
-
-if __name__ == "__main__":
-    password = generate_password()
-    print(password)
