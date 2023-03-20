@@ -12,8 +12,8 @@ These characters will appear in a random order
 """
 
 character_types = {
-    "uppercase_letter": string.ascii_uppercase,
-    "lowercase_letter": string.ascii_lowercase,
+    "uppercase letter": string.ascii_uppercase,
+    "lowercase letter": string.ascii_lowercase,
     "digit": string.digits,
     "symbol": string.punctuation
 }
@@ -33,19 +33,19 @@ def shuffle_characters(characters):
     shuffled_characters = "".join(random.sample(characters, len(characters)))
     return shuffled_characters
 
-def generate_password():
+def generate_password(uppercase=2, lowercase=2, digits=2, symbols=2):
     """
     Generates a random password
     """
     password = ""
-    password += generate_character("uppercase_letter")
-    password += generate_character("uppercase_letter")
-    password += generate_character("lowercase_letter")
-    password += generate_character("lowercase_letter")
-    password += generate_character("digit")
-    password += generate_character("digit")
-    password += generate_character("symbol")
-    password += generate_character("symbol")
+    for i in range(uppercase):
+        password += generate_character("uppercase letter")
+    for j in range(lowercase):
+        password += generate_character("lowercase letter")
+    for k in range(digits):
+        password += generate_character("digit")
+    for l in range(symbols):
+        password += generate_character("symbol")
 
     final_password = shuffle_characters(password)
 
