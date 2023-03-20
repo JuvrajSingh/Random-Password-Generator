@@ -1,11 +1,16 @@
-from flask import Flask
+from flask import Flask, render_template, request
 from models import generate_password
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-    return generate_password()
+    """Generates Random Password"""
+    if request.method == "POST":
+        password = generate_password()
+        return render_template("index.html", password=password)
+    else:
+        return render_template("index.html", password="")
 
 
 if __name__ == "__main__":
