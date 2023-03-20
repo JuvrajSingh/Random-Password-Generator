@@ -3,19 +3,14 @@ import string
 
 """
 Generate a random password 8 characters long everytime the programme is run
-Password will include:
-    2 uppercase letters
-    2 lowercase letters
-    2 digits
-    2 symbols
-These characters will appear in a random order
 """
 
 character_types = {
     "uppercase letter": string.ascii_uppercase,
     "lowercase letter": string.ascii_lowercase,
     "digit": string.digits,
-    "symbol": string.punctuation
+    "symbol": string.punctuation,
+    "any": string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation
 }
 
 def generate_character(character_type):
@@ -33,9 +28,14 @@ def shuffle_characters(characters):
     shuffled_characters = "".join(random.sample(characters, len(characters)))
     return shuffled_characters
 
-def generate_password(uppercase=2, lowercase=2, digits=2, symbols=2):
+def generate_password(length=8, uppercase=2, lowercase=2, digits=2, symbols=2):
     """
-    Generates a random password
+    Generates a random password given:
+    Length of the password
+    How many uppercase letters it should contain
+    How many lowercase letters it should contain
+    How many digits it should contain
+    How many symbols it should contain
     """
     password = ""
     for i in range(uppercase):
@@ -46,6 +46,11 @@ def generate_password(uppercase=2, lowercase=2, digits=2, symbols=2):
         password += generate_character("digit")
     for l in range(symbols):
         password += generate_character("symbol")
+
+    remaining = length - (uppercase + lowercase + digits + symbols)
+    if remaining > 0:
+        for m in range(remaining):
+            password += generate_character("any")
 
     final_password = shuffle_characters(password)
 
