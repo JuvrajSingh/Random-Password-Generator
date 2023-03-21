@@ -21,6 +21,8 @@ def index():
             # Ensure min. no. of digits was entered
             if not digits:
                 return apology("Please input the minimum number of digits you would like the password to contain")
+            elif digits == "0":
+                digits = "1"
         else:
             digits = "0"
 
@@ -29,7 +31,9 @@ def index():
             symbols = request.form.get("symbols")
             # Ensure min. no. of symbols was entered
             if not symbols:
-                return apology("Please input the minimum number of symbols you would like the password to contain")
+                return apology("Please input the minimum number of special characters you would like the password to contain")
+            elif symbols == "0":
+                symbols = "1"
         else:
             symbols = "0"
 

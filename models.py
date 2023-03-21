@@ -11,6 +11,9 @@ character_types = {
     "lowercase letter": string.ascii_lowercase,
     "digit": string.digits,
     "symbol": string.punctuation,
+    "any letter": string.ascii_uppercase + string.ascii_lowercase,
+    "letter or digit": string.ascii_uppercase + string.ascii_lowercase + string.digits,
+    "letter or symbol": string.ascii_uppercase + string.ascii_lowercase + string.punctuation,
     "any": string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation
 }
 
@@ -50,8 +53,18 @@ def generate_password(length=8, uppercase=2, lowercase=2, digits=2, symbols=2):
 
     remaining = length - (uppercase + lowercase + digits + symbols)
     if remaining > 0:
-        for m in range(remaining):
-            password += generate_character("any")
+        if digits == 0 and symbols == 0:
+            for m in range(remaining):
+                password += generate_character("any letter")
+        elif digits == 0:
+            for m in range(remaining):
+                password += generate_character("letter or symbol")
+        elif symbols == 0:
+            for m in range(remaining):
+                password += generate_character("letter or digit")
+        else:
+            for m in range(remaining):
+                password += generate_character("any")
 
     final_password = shuffle_characters(password)
 
