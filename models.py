@@ -1,5 +1,6 @@
 import random
 import string
+from flask import render_template
 
 """
 Generate a random password 8 characters long everytime the programme is run
@@ -55,3 +56,6 @@ def generate_password(length=8, uppercase=2, lowercase=2, digits=2, symbols=2):
     final_password = shuffle_characters(password)
 
     return final_password
+
+def apology(message):
+    return render_template("apology.html", message=message)

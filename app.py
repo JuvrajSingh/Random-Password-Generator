@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from models import generate_password
+from models import generate_password, apology
 
 app = Flask(__name__)
 
@@ -13,16 +13,14 @@ def index():
         length = request.form.get("length")
         # Ensure length was entered
         if not length:
-            # TO DO
-            return
+            return apology("Please input a length")
         
         # Check whether digits checkbox was checked
         if request.form.get("digits_required"):
             digits = request.form.get("digits")
             # Ensure min. no. of digits was entered
             if not digits:
-                # TO DO
-                return
+                return apology("Please input the minimum number of digits you would like the password to contain")
         else:
             digits = "0"
 
@@ -31,8 +29,7 @@ def index():
             symbols = request.form.get("symbols")
             # Ensure min. no. of symbols was entered
             if not symbols:
-                # TO DO
-                return
+                return apology("Please input the minimum number of symbols you would like the password to contain")
         else:
             symbols = "0"
 

@@ -1,45 +1,33 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html lang="en">
+{% block title %}
+    Random Password Generator
+{% endblock %}
 
-    <head>
+{% block main %}
+    <form action="/" method="post">
+        <div>
+            <label for="length">Length of password:</label>
+            <input type="number" id="length" name="length" min="8" max="40">
+        </div>
+        <div>
+            <input type="checkbox" id="digits_required" name="digits_required" value="digits" checked>
+            <label for="digits_required">Numbers (0-9)</label>
+        </div>
+        <div>
+            <input type="checkbox" id="symbols_required" name="symbols_required" value="symbols" checked>
+            <label for="symbols_required">Special Characters</label>
+        </div>
+        <div>
+            <label for="digits">Minimum number of digits:</label>
+            <input type="number" id="digits" name="digits" min="0" max="5">
+        </div>
+        <div>
+            <label for="symbols">Minimum number of special characters:</label>
+            <input type="number" id="symbols" name="symbols" min="0" max="5">
+        </div>
+        <input type="submit" value="Generate Password">
+    </form>
 
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <link href="/static/style.css" rel="stylesheet">
-
-        <title>Random Password Generator</title>
-
-    </head>
-
-    <body>
-        <form action="/" method="post">
-            <div>
-                <label for="length">Length of password:</label>
-                <input type="number" id="length" name="length" min="8" max="40">
-            </div>
-            <div>
-                <input type="checkbox" id="digits_required" name="digits_required" value="digits" checked>
-                <label for="digits_required">Numbers (0-9)</label>
-            </div>
-            <div>
-                <input type="checkbox" id="symbols_required" name="symbols_required" value="symbols" checked>
-                <label for="symbols_required">Special Characters</label>
-            </div>
-            <div>
-                <label for="digits">Minimum number of digits:</label>
-                <input type="number" id="digits" name="digits" min="0" max="5">
-            </div>
-            <div>
-                <label for="symbols">Minimum number of special characters:</label>
-                <input type="number" id="symbols" name="symbols" min="0" max="5">
-            </div>
-            <input type="submit" value="Generate Password">
-        </form>
-
-        <b>{{ password }}</b>
-    </body>
-
-</html>
+    <b>{{ password }}</b>
+{% endblock %}
